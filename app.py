@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pydantic import ValidationError
 from models import SurveySubmission, StoredSurveyRecord
-from storage import append_json_line
+from storage import append_json_line, sha256_hash
 
 app = Flask(__name__)
 # Allow cross-origin requests so the static HTML can POST from localhost or file://

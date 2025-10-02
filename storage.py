@@ -1,9 +1,13 @@
 import json
+import hashlib
 from pathlib import Path
 from datetime import datetime
 from typing import Mapping, Any
 
 RESULTS_PATH = Path("data/survey.ndjson")
+
+def sha256_hash(value: str) -> str:
+    return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
 def append_json_line(record: Mapping[str, Any]) -> None:
     RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
